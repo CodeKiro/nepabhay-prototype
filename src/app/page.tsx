@@ -108,11 +108,11 @@ export default function HomePage() {
         {/* Hero Section */}
         <section className="relative min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 overflow-hidden">
           {/* Animated Background Elements */}
-          <div className="absolute inset-0">
+          {/* <div className="absolute inset-0">
             <div className="absolute top-6 sm:top-10 left-6 sm:left-10 w-10 h-10 sm:w-16 sm:h-16 bg-red-200/30 rounded-full animate-pulse"></div>
             <div className="absolute top-1/4 right-8 sm:right-16 w-8 h-8 sm:w-12 sm:h-12 bg-blue-300/40 rounded-full animate-bounce delay-300"></div>
             <div className="absolute bottom-1/3 right-4 sm:right-8 w-6 h-6 sm:w-10 sm:h-10 bg-red-300/25 rounded-full animate-pulse delay-700"></div>
-          </div>
+          </div> */}
 
           <div className="relative max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-6 sm:py-10">
             <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-6 sm:gap-8 items-center min-h-[75vh]">
