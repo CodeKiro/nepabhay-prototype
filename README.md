@@ -1,37 +1,88 @@
-# Nepa:Bhay - Poetry, Stories & Blogs Platform
+# Nepa:Bhay - Language Learning Platform (Prototype)
 
-A modern Next.js platform for sharing poems, stories, and blogs with robust user management features.
+> A personal prototype for a platform dedicated to preserving and celebrating the rich linguistic heritage of Nepal.
+
+## About Nepa:Bhay
+
+**"Nepa:Bhay"** means "Nepali Bhasa" (Nepali Language), representing not just one language but the entire spectrum of local Nepali languages. This platform is a prototype of my idea to celebrate the linguistic diversity that makes Nepal culturally rich and unique.
+
+I started this as a **Newa language learning platform**, but my vision extends far beyond. I am building a comprehensive repository for all local Nepali languages, preserving their essence for future generations.
+
+### 🎯 My Mission
+To create a comprehensive digital repository for learning and preserving Nepali languages, starting with Newa language, while building a vibrant community of language enthusiasts and cultural heritage preservers.
+
+### 👁️ My Vision
+To become the leading online platform for all local Nepali languages, creating an interconnected community that celebrates, learns, and preserves the diverse linguistic and cultural heritage of Nepal for future generations.
 
 ## Features
 
-### 🔐 User Management
+### 📚 Learning Made Engaging
+- **Articles:** Rich, informative articles about Newa language, culture, and heritage. (Available Now)
+- **Interactive Lessons:** Structured, step-by-step lessons with interactive exercises to make learning engaging and effective. (Coming Soon)
+- **Quizzes:** Test your knowledge with fun, interactive quizzes designed to reinforce your learning journey. (Coming Soon)
 
-- **Username Support**: Unique usernames with email/username login
-- **Soft Account Deletion**: 30-day grace period with auto-reactivation
-- **Account Deactivation**: Temporary suspension with easy reactivation
-- **Auto Cleanup**: Daily scheduled cleanup at 2 AM
+### 🤝 Community-Driven Approach
+The idea is for this platform to thrive on the collective passion and contributions of community members:
+- **Contributors:** Writers, educators, and language experts who create and curate educational content.
+- **Culture Enthusiasts:** Passionate individuals dedicated to preserving and sharing cultural heritage.
+- **Developers:** Technical contributors who help build and improve the platform's features.
 
-### 🎨 Content Management
+### 🔐 Robust User Management
+- **Username Support**: Unique usernames with email/username login.
+- **Account Management**: Soft account deletion (30-day grace period), account deactivation, and daily automated cleanup.
+- **Profile Management**: Profile updates, email verification, password reset functionality, and role-based access control.
+- **Admin Dashboard**: Comprehensive admin tools for content and user management.
 
-- Poetry, stories, and blog creation
-- Rich text editor with formatting
-- Categories and genres
-- User reactions and comments
+## Tech Stack
 
-### 👤 User Features
+This codebase is a prototype built as a full-stack Next.js application to demonstrate the core concepts of the platform:
 
-- Profile management with username updates
-- Email verification system
-- Password reset functionality
-- Role-based access control
+- **Framework**: Next.js 15 (App Router)
+- **Language**: TypeScript
+- **Database**: MongoDB with Mongoose
+- **Authentication**: NextAuth.js v5
+- **Styling**: Tailwind CSS v4 & Lucide React
+- **State Management**: Redux Toolkit
+- **Rich Text Editor**: Tiptap
+- **Forms & Validation**: React Hook Form + Zod
+- **Email**: SMTP (Nodemailer)
+- **Scheduler**: node-cron for automated background tasks
 
 ## Quick Start
 
 ### 1. Environment Setup
 
+Clone the repository and set up your environment variables:
+
 ```bash
+git clone https://github.com/CodeKiro/nepabhay-prototype.git
+cd nepabhay-prototype
 cp .env.example .env.local
-# Edit .env.local with your configuration
+```
+
+Edit `.env.local` with your configuration:
+```env
+# Database
+MONGODB_URI=your-mongodb-uri
+
+# Authentication
+NEXTAUTH_SECRET=your-nextauth-secret
+NEXTAUTH_URL=http://localhost:3000
+
+# Email Configuration (e.g., Gmail)
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USER=your-email@gmail.com
+MAIL_PASSWORD=your-app-password
+MAIL_FROM=your-email@gmail.com
+
+# Admin Setup
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=secure-admin-password
+
+# Cleanup Scheduler
+CLEANUP_API_KEY=your-secure-cleanup-key
+ENABLE_SCHEDULER=true
 ```
 
 ### 2. Install Dependencies
@@ -46,33 +97,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the application.
-
-## Environment Variables
-
-```bash
-# Database
-MONGODB_URI=your-mongodb-uri
-
-# Authentication
-NEXTAUTH_SECRET=your-nextauth-secret
-NEXTAUTH_URL=http://localhost:3000
-
-# Email Configuration (Gmail)
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=587
-MAIL_USER=nepabhay2025@gmail.com
-MAIL_PASSWORD=your-gmail-app-password
-MAIL_FROM=nepabhay2025@gmail.com
-
-# Admin Setup
-ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=secure-admin-password
-
-# Cleanup Scheduler
-CLEANUP_API_KEY=your-secure-cleanup-key
-ENABLE_SCHEDULER=true
-```
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
 ## Scripts
 
@@ -80,119 +105,15 @@ ENABLE_SCHEDULER=true
 npm run dev          # Start development server
 npm run build        # Build for production
 npm run start        # Start production server
-npm run setup-admin  # Create admin user
-npm run cleanup      # Manual account cleanup
-npm run test-email   # Test email configuration
+npm run setup-admin  # Create an admin user from the CLI
+npm run cleanup      # Trigger manual account cleanup
+npm run test-email   # Test the configured email settings
 ```
 
 ## Admin Features
 
-Access admin dashboard at `/admin` to:
-
-- View platform statistics
-- Manage users and content
-- Monitor account cleanup status
-- Run manual account cleanup
-
-## Account Management
-
-### Soft Deletion
-
-- Users can request account deletion
-- 30-day grace period before permanent deletion
-- Automatic reactivation on login during grace period
-- Scheduled cleanup runs daily at 2 AM
-
-### Username System
-
-- 3-20 characters (letters, numbers, underscores)
-- Unique across platform
-- Login with email OR username
-- Changeable in profile settings
-
-## Tech Stack
-
-- **Framework**: Next.js 15 with App Router
-- **Database**: MongoDB with Mongoose
-- **Authentication**: NextAuth.js
-- **Styling**: Tailwind CSS
-- **Email**: SMTP (Gmail with App Passwords)
-- **Scheduler**: node-cron for automated tasks
-
-## Production Deployment
-
-### Environment Variables (CRITICAL)
-
-Set these in your deployment platform:
-
-```bash
-# Authentication (REQUIRED)
-NEXTAUTH_SECRET=your-long-random-secret-minimum-32-characters
-NEXTAUTH_URL=https://yourdomain.com  # Must match your deployed domain
-
-# Database
-MONGODB_URI=your-production-mongodb-uri
-
-# OAuth Providers (Optional)
-GOOGLE_CLIENT_ID=your-google-client-id
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-FACEBOOK_CLIENT_ID=your-facebook-client-id
-FACEBOOK_CLIENT_SECRET=your-facebook-client-secret
-
-# Email
-MAIL_HOST=your-smtp-host
-MAIL_PORT=587
-MAIL_USER=your-email
-MAIL_PASSWORD=your-email-password
-MAIL_FROM=your-from-email
-
-# Cleanup
-CLEANUP_API_KEY=your-secure-cleanup-key
-ENABLE_SCHEDULER=true
-```
-
-### Platform-Specific Setup
-
-#### Vercel
-
-1. Connect your GitHub repository
-2. Add environment variables in Project Settings
-3. Ensure `NEXTAUTH_URL` matches your domain
-4. Deploy
-
-#### Netlify/Railway/Render
-
-1. Set build command: `npm run build`
-2. Set start command: `npm run start`
-3. Add all environment variables
-4. Deploy
-
-### OAuth Configuration
-
-Update OAuth provider redirect URIs:
-
-- Google: `https://yourdomain.com/api/auth/callback/google`
-- Facebook: `https://yourdomain.com/api/auth/callback/facebook`
-
-### Troubleshooting Deployment
-
-If experiencing authentication issues, see [DEPLOYMENT_TROUBLESHOOTING.md](./DEPLOYMENT_TROUBLESHOOTING.md)
-
-### Debugging Endpoints
-
-- `/api/health` - Database connectivity
-- `/api/auth/status` - Authentication status
-
-## Support
-
-For issues or questions:
-
-1. Check console logs for errors
-2. Verify environment configuration
-3. Ensure database connectivity
-4. Review API responses for detailed errors
-
-Built with ❤️ using Next.js and modern web technologies.
-
-# nepabhay-prototype
-# nepabhay-prototype
+Access the admin dashboard at `/admin` to:
+- View platform statistics.
+- Manage users, articles, and other community content.
+- Monitor account cleanup status.
+- Run manual account cleanup procedures.
